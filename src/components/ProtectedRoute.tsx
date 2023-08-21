@@ -6,12 +6,12 @@ interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
-export function ProtectedRoute({ children }: ProtectedRouteProps): JSX.Element {
+export function ProtectedRoute(props: ProtectedRouteProps): JSX.Element {
   const { user, loading } = useAuth();
 
   if (loading) return <h1>Loading</h1>;
 
   if (!user) return <Navigate to="/login" />;
 
-  return <>{children}</>;
+  return <>{props.children}</>;
 }
